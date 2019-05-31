@@ -8,13 +8,13 @@ chatbot = ChatBot(
 #					storage_adapter='chatterbot.storage.SQLStorageAdapter',
 #					database_uri='sqlite:///database.sqlite3'
 				logic_adapters=[
-						'chatterbot.logic.MathematicalEvaluation',
-						#'chatterbot.logic.TimeLogicAdapter',
-					    {	
-							'import_path':'chatterbot.logic.BestMatch',
-							'default_response': 'I am sorry, but I do not understand.',
-							'maximum_similarity_threshold': 0.90
-					 }	
+								'chatterbot.logic.MathematicalEvaluation',						
+								'chatterbot.logic.MathematicalEvaluation',						
+								{	
+									'import_path':'chatterbot.logic.BestMatch',
+									'default_response': 'I am sorry, but I do not understand.',
+									'maximum_similarity_threshold': 0.90
+								}	
     ]
 )
 
