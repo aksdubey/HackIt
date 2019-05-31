@@ -58,27 +58,40 @@ class TkinterGUIExample(tk.Tk):
 	def get_response(self, event=None):
 		user_input = self.usr_input.get()
 		self.say_out_loud(str(user_input), 1)
-		if user_input=='Bye' or user_input=='bye' :
-		   self.say_out_loud('Bye See you soon', 0)
-		   self.destroy()
-		else :
-			self.usr_input.delete(0, tk.END)
-			response = self.chatbot.get_response(user_input)
-			if response.confidence==0 :
-				self.conversation['state'] = 'normal'
-				f = open("unAnsweredQuestions.txt", "a")
-				f.write("- - "+user_input+"\n")
-				f.close()
-				self.conversation.insert(			
-				tk.END, "You: " + user_input + "\n" + "MyBuddy: " + "I am not trained for this question, I will save it for future reference" + "\n"
-			)
-			else :	
-				self.conversation['state'] = 'normal'
-				self.conversation.insert(			
-					tk.END, "You: " + user_input + "\n" + "MyBuddy: " + str(response.text) + "\n"
+		st = user_input.split(" ")
+		if len(st) >= 2:
+			print(len(st))
+			if user_input=='Bye' or user_input=='bye' :
+				self.say_out_loud('Bye See you soon', 0)
+				self.destroy()
+			else :
+				self.usr_input.delete(0, tk.END)
+				response = self.chatbot.get_response(user_input)
+				if response.confidence==0 :
+					self.conversation['state'] = 'normal'
+					f = open("unAnsweredQuestions.txt", "a")
+					f.write("- - "+user_input+"\n")
+					f.close()
+					self.conversation.insert(			
+					tk.END, "You: " + user_input + "\n" + "MyBuddy: " + "I am not trained for this question, I will save it for future reference" + "\n"
 				)
-				self.say_out_loud(str(response.text), 0)
-				self.conversation['state'] = 'disabled'
+				else :	
+					self.conversation['state'] = 'normal'
+					self.conversation.insert(			
+						tk.END, "You: " + user_input + "\n" + "MyBuddy: " + str(response.text) + "\n"
+					)
+					self.say_out_loud(str(response.text), 0)
+					self.conversation['state'] = 'disabled'
+		else:
+			if user_input=='Bye' or user_input=='bye' :
+				self.say_out_loud('Bye See you soon', 0)
+				self.destroy()
+			else:
+				f = open("C:/Python37/Lib/site-packages/chatterbot_corpus/data/english/master.txt", "r")
+				lines = f.readlines()
+				for line in lines:
+					if "- - " in line and user_input in line:
+						self.conversation.insert(tk.END,"Do you mean "+line.replace("- - ", ""))	
 					
 	def cleardata(self, event=None):
 		self.conversation['state'] = 'normal'
