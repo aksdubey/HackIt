@@ -27,25 +27,12 @@ class TkinterGUIExample(tk.Tk):
 
 	def initialize(self):
 		self.grid()
-		#self.conversation_lbl = ttk.Label(self, anchor=tk.E, text='Conversation:')
-		#self.conversation_lbl.grid(column=0, row=0, columnspan=2, sticky='W', padx=3, pady=3)
-		
-		#self.conversation = ScrolledText.ScrolledText(self, state='disabled')
-		#self.conversation.grid(column=0, row=1, columnspan=2, sticky='nesw', padx=3, pady=3)
-		#self.respond = ttk.Button(self, text='Reset Conversation', command=self.cleardata)
-		#self.respond.grid(column=1, row=2, sticky='nesw', padx=3, pady=3)
-		#ttk.Style().configure("TButton", padding=3, relief="flat",background="red")
-		#self.respond = ttk.Button(self,text='Get Response', command=self.get_response)
-		#self.respond.grid(column=1, row=3,sticky='nesw', padx=3, pady=3)
-		#self.usr_input = ttk.Entry(self, state='normal')
-		#self.usr_input.grid(column=0, row=3, sticky='nesw', padx=3, pady=3)
-		#self.conversation.insert(tk.END,"MyBuddy: Welcome! Please try me for any Knowledge Management purpose" +"\n")
-		
-		
-		self.respond = ttk.Button(self, text='Get Response', command=self.get_response)
+		self.respond = ttk.Button(self, text='Text Me!', command=self.get_response)
 		self.respond.grid(column=0, row=0, sticky='nesw', padx=3, pady=3)
 		self.respond = ttk.Button(self, text='Reset Conversation', command=self.cleardata)
 		self.respond.grid(column=0, row=1, sticky='nesw', padx=3, pady=3)
+		self.respond = ttk.Button(self, text='Talk Me!', command=self.process_speech)
+		self.respond.grid(column=1, row=1, sticky='nesw', padx=3, pady=3)
 		self.usr_input = ttk.Entry(self, state='normal')
 		self.usr_input.grid(column=1, row=0, sticky='nesw', padx=3, pady=3)
 		self.conversation_lbl = ttk.Label(self, anchor=tk.E, text='Conversation:')
