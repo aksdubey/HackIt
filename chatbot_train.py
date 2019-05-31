@@ -21,7 +21,8 @@ chatbot = ChatBot(
 trainer = ChatterBotCorpusTrainer(chatbot)
 
 trainer.train(
-    "C:/Users/ADMIN\chatterbot-corpus-master\chatterbot_corpus\data\english/"
+    "C:/Python37/Lib/site-packages\chatterbot_corpus\data\english/"
+    #"C:/Users/ADMIN\chatterbot-corpus-master\chatterbot_corpus\data\english/"
 	#"./data/CUBE/"
 )
 # bot.trainer(ChatterBotCorpusTrainer)
